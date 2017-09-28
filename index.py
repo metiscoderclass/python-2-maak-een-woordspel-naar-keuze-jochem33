@@ -1,10 +1,35 @@
+#Voorbereiding, variabeles maken enzo
+
+geheimwoord = "appel"
+geraden = 0
+
+galg = 0
+foutgeraden = 0;
+
+geradenletters = []
+geradenwoord = []
+
+lengte = len(geheimwoord)
+for i in range(lengte):
+    geradenwoord.append("_")
+
+def voortgang():
+    galg()
+    print(geradenwoord)
+    print(geradenletters)
+
+def galg():
+    if foutgeraden == 0:
+        print("________")
+    if foutgeraden == 1:
+        for i in range(4):
+            print("    |")
+        print("________")
+    if foutgeraden == 2:
+
+foutgeraden = 1;
+voortgang()
 '''
-pseudocode
-
-Voorbereiding, variabeles maken enzo
-
-
-
 while niet geraden Loop:
 
     Print voorgang: galg, streepjes en al geraden letters
@@ -44,3 +69,4 @@ else
     print je heb het helaas niet geraden, het woord was: geheim woord
 
 '''
+
