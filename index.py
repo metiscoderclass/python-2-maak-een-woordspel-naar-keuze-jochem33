@@ -64,8 +64,8 @@ while geraden == 0:
     if len(geradenletter) > 1 or len(geradenletter) < 0:
         print("Je moet 1 letter opgeven")
 
-         
-
+    for i in range(lengte)
+        if geradenletter == geheimwoord[i]
 
 '''
 
