@@ -15,22 +15,59 @@ for i in range(lengte):
 
 def voortgang():
     galg()
-    print(geradenwoord)
-    print(geradenletters)
+    print()
+    for i in geradenwoord:
+        print(i + " ", end='')
+    print()
+    for i in geradenletters:
+        print(i + ", ", end='')
+    print()
 
 def galg():
+    for i in range(10):
+            print("")
     if foutgeraden == 0:
         print("________")
     if foutgeraden == 1:
-        for i in range(4):
+        for i in range(6):
             print("    |")
-        print("________")
+        print("__|_____")
     if foutgeraden == 2:
+        print(" _________")
+        for i in range(6):
+            print("  |")
+        print("__|_____")
+    if foutgeraden == 4:
+        print(" _________")
+        print("  |/     |")
+        print("  |")
+        print("  |")
+        print("  |")
+        print("  |")
+        print("  |")
+        print("__|_____")
+    if foutgeraden == 5:
+        print(" _________")
+        print("  |/     |")
+        print("  |     ( )")
+        print("  |     /|\ ")
+        print("  |     / \ ")
+        print("  |")
+        print("  |")
+        print("__|_____")
 
-foutgeraden = 1;
-voortgang()
+#while niet geraden Loop:
+while geraden == 0:
+    voortgang()
+    geradenletter = input("Raad een Letter: ")
+
+    if len(geradenletter) > 1 or len(geradenletter) < 0:
+        print("Je moet 1 letter opgeven")
+
+         
+
+
 '''
-while niet geraden Loop:
 
     Print voorgang: galg, streepjes en al geraden letters
 
