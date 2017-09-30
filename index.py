@@ -2,6 +2,9 @@
 
 import time
 
+print("Welkom Bij Galgje")
+print("")
+print("Om het hele woord te raden: raad eerst een vraagteken")
 
 geheimwoord = "derrie"
 geraden = 0
@@ -83,15 +86,27 @@ while geraden == 0:
     voortgang()
     geradenletter = input("Raad een Letter: ")
 
-    if len(geradenletter) > 1 or len(geradenletter) < 0:
+    if geradenletter == "?":
+        raadwoord = input("raad het hele woord: ")
+        if not len(raadwoord) == lengte:
+            print("De lengte komt noet overeen met het geheime woord")
+        elif raadwoord == geheimwoord:
+            breakd
+        else:
+            print("Dat is niet goed, ga verder met letters raden of probeer het opnieuw!")
+        time.sleep(1)
+    elif len(geradenletter) == 0:
         print("Je moet 1 letter opgeven")
-        time.sleep(2)
+        time.sleep(1)
+    elif len(geradenletter) > 1:
+        print("Je mag maar 1 letter opgeven")
+        time.sleep(1)
     elif not geradenletter in alfabet:
         print("Je mag alleen letter zeggen, geen leesteken, cijfers e.d.")
-        time.sleep(2)
+        time.sleep(1)
     elif geradenletter in geradenletters:
         print("je mag geen letter zeggen die je al hebt geraden")
-        time.sleep(2)
+        time.sleep(1)
     else:
         for i in range(lengte):
             if geradenletter == geheimwoord[i]:
@@ -103,8 +118,7 @@ while geraden == 0:
                 added = 1
                 eenlettergoed = 1
         if lettersgeraden == lengte:
-            voortgang()
-            break
+            geraden = 1
 
         if eenlettergoed == 0:
             if added == 0:
@@ -117,10 +131,11 @@ while geraden == 0:
         added = 0
         eenlettergoed = 0
 
+print("")
 if foutgeraden == 5:
     print("Hellaas! Je hebt verloren, het geheime woord was " + geheimwoord)
 else:
-    print("Je hebt gewonnen!! Het geheime woord was inderdaad " + geheimwoord)
+    print("Je hebt gewonnen!! Het geheime woord was inderdaad " + geheimwoord + " !")
 '''
 
     Print voorgang: galg, streepjes en al geraden letters
