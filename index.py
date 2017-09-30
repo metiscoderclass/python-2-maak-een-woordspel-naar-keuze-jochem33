@@ -1,6 +1,6 @@
 #Voorbereiding, variabeles maken enzo
 
-geheimwoord = "appel"
+geheimwoord = "kakke"
 geraden = 0
 
 galg = 0
@@ -8,6 +8,10 @@ foutgeraden = 0;
 
 geradenletters = []
 geradenwoord = []
+
+added = 0
+
+eenlettergoed = 0
 
 lengte = len(geheimwoord)
 for i in range(lengte):
@@ -18,10 +22,12 @@ def voortgang():
     print()
     for i in geradenwoord:
         print(i + " ", end='')
-    print()
+    print("")
+    print("")
     for i in geradenletters:
         print(i + ", ", end='')
-    print()
+    print("")
+    print("")
 
 def galg():
     for i in range(10):
@@ -30,7 +36,7 @@ def galg():
         print("________")
     if foutgeraden == 1:
         for i in range(6):
-            print("    |")
+            print("  |")
         print("__|_____")
     if foutgeraden == 2:
         print(" _________")
@@ -46,7 +52,7 @@ def galg():
         print("  |")
         print("  |")
         print("__|_____")
-    if foutgeraden == 5:
+    if foutgeraden > 5 or foutgeraden == 5:
         print(" _________")
         print("  |/     |")
         print("  |     ( )")
@@ -63,10 +69,27 @@ while geraden == 0:
 
     if len(geradenletter) > 1 or len(geradenletter) < 0:
         print("Je moet 1 letter opgeven")
+    else:
+        for i in range(lengte):
+            if geradenletter == geheimwoord[i]:
+                print("Je hebt de letter " + geradenletter + " geraden")
+                geradenwoord[i] = geradenletter
+                if added == 0:
+                    geradenletters.append(geradenletter)
+                added = 1
+                eenlettergoed = 1
+        if eenlettergoed == 0:
+            if added == 0:
+                geradenletters.append(geradenletter)
+            added = 1
+            foutgeraden = foutgeraden + 1
+            if foutgeraden == 5:
+                break
+        added = 0
+        eenlettergoed = 0
 
-    for i in range(lengte)
-        if geradenletter == geheimwoord[i]
 
+print("poepe")
 '''
 
     Print voorgang: galg, streepjes en al geraden letters
