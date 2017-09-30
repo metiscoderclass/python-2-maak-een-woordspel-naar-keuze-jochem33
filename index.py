@@ -1,13 +1,20 @@
 #Voorbereiding, variabeles maken enzo
 
-geheimwoord = "kakke"
+import time
+
+
+geheimwoord = "derrie"
 geraden = 0
+
+alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 galg = 0
 foutgeraden = 0;
 
 geradenletters = []
 geradenwoord = []
+
+lettersgeraden = 0
 
 added = 0
 
@@ -43,7 +50,7 @@ def galg():
         for i in range(6):
             print("  |")
         print("__|_____")
-    if foutgeraden == 4:
+    if foutgeraden == 3:
         print(" _________")
         print("  |/     |")
         print("  |")
@@ -52,7 +59,16 @@ def galg():
         print("  |")
         print("  |")
         print("__|_____")
-    if foutgeraden > 5 or foutgeraden == 5:
+    if foutgeraden == 4:
+        print(" _________")
+        print("  |/     |")
+        print("  |     ( )")
+        print("  |")
+        print("  |")
+        print("  |")
+        print("  |")
+        print("__|_____")
+    if foutgeraden == 5:
         print(" _________")
         print("  |/     |")
         print("  |     ( )")
@@ -69,6 +85,13 @@ while geraden == 0:
 
     if len(geradenletter) > 1 or len(geradenletter) < 0:
         print("Je moet 1 letter opgeven")
+        time.sleep(2)
+    elif not geradenletter in alfabet:
+        print("Je mag alleen letter zeggen, geen leesteken, cijfers e.d.")
+        time.sleep(2)
+    elif geradenletter in geradenletters:
+        print("je mag geen letter zeggen die je al hebt geraden")
+        time.sleep(2)
     else:
         for i in range(lengte):
             if geradenletter == geheimwoord[i]:
@@ -76,20 +99,28 @@ while geraden == 0:
                 geradenwoord[i] = geradenletter
                 if added == 0:
                     geradenletters.append(geradenletter)
+                lettersgeraden = lettersgeraden + 1
                 added = 1
                 eenlettergoed = 1
+        if lettersgeraden == lengte:
+            voortgang()
+            break
+
         if eenlettergoed == 0:
             if added == 0:
                 geradenletters.append(geradenletter)
             added = 1
             foutgeraden = foutgeraden + 1
             if foutgeraden == 5:
+                voortgang()
                 break
         added = 0
         eenlettergoed = 0
 
-
-print("poepe")
+if foutgeraden == 5:
+    print("Hellaas! Je hebt verloren, het geheime woord was " + geheimwoord)
+else:
+    print("Je hebt gewonnen!! Het geheime woord was inderdaad " + geheimwoord)
 '''
 
     Print voorgang: galg, streepjes en al geraden letters
