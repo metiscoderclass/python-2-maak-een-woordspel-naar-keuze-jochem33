@@ -91,7 +91,7 @@ while geraden == 0:
         if not len(raadwoord) == lengte:
             print("De lengte komt niet overeen met het geheime woord")
         elif raadwoord == geheimwoord:
-            breakd
+            break
         else:
             print("Dat is niet goed, ga verder met letters raden of probeer het opnieuw!")
         time.sleep(1)
