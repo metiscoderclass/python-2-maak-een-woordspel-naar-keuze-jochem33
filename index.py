@@ -89,7 +89,7 @@ while geraden == 0:
     if geradenletter == "?":
         raadwoord = input("raad het hele woord: ")
         if not len(raadwoord) == lengte:
-            print("De lengte komt noet overeen met het geheime woord")
+            print("De lengte komt niet overeen met het geheime woord")
         elif raadwoord == geheimwoord:
             breakd
         else:
@@ -102,7 +102,7 @@ while geraden == 0:
         print("Je mag maar 1 letter opgeven")
         time.sleep(1)
     elif not geradenletter in alfabet:
-        print("Je mag alleen letter zeggen, geen leesteken, cijfers e.d.")
+        print("Je mag alleen letter zeggen, geen leesteken, hoofdletters, cijfers e.d.")
         time.sleep(1)
     elif geradenletter in geradenletters:
         print("je mag geen letter zeggen die je al hebt geraden")
