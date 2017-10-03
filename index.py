@@ -1,18 +1,30 @@
 #Voorbereiding, variabeles maken enzo
 
 import time
+from random import randint
+
+geheimwoorden = []
 
 print("Welkom Bij Galgje")
 print("")
 print("Om het hele woord te raden: raad eerst een vraagteken")
+print("")
+moeilijk = input("Wil je een makkelijk, normaal of moeilijk woord? (1, 2 of 3): ")
+if moeilijk == "1":
+    geheimwoorden = ["bot", "ijs", "hoi", "hark"]
+elif moeilijk == "2":
+    geheimwoorden = ["eten", "appel", "laptop", "binair"]
+elif moeilijk == "3":
+    geheimwoorden = ["computer", "blauw", "geel", "comuterarchitectuur"]
 
-geheimwoord = "derrie"
-geraden = 0
 
-alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+geheimwoord = geheimwoorden[randint(0, 2)]
+geraden = False
+
+alfabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 galg = 0
-foutgeraden = 0;
+foutgeraden = 0
 
 geradenletters = []
 geradenwoord = []
@@ -82,11 +94,12 @@ def galg():
         print("__|_____")
 
 #while niet geraden Loop:
-while geraden == 0:
-    voortgang()
-    geradenletter = input("Raad een Letter: ")
+while geraden == False: # while not geraden
+    voortgang() #Print voorgang: galg, streepjes en al geraden letters
+    geradenletter = input("Raad een Letter: ") #Vraag om een letter
 
-    if geradenletter == "?":
+    # onderstaande kan ook in een switch case maar die bestaan niet in python
+    if geradenletter == "?": #if om het hele woord te raden
         raadwoord = input("raad het hele woord: ")
         if not len(raadwoord) == lengte:
             print("De lengte komt niet overeen met het geheime woord")
@@ -95,36 +108,38 @@ while geraden == 0:
         else:
             print("Dat is niet goed, ga verder met letters raden of probeer het opnieuw!")
         time.sleep(1)
-    elif len(geradenletter) == 0:
+
+    elif len(geradenletter) == 0: # ifjes om te zorgen dat er geen leesteken, cijfers, hoofdletters en niet meer of minder dan 1 letter opgeeft
         print("Je moet 1 letter opgeven")
         time.sleep(1)
     elif len(geradenletter) > 1:
         print("Je mag maar 1 letter opgeven")
         time.sleep(1)
     elif not geradenletter in alfabet:
-        print("Je mag alleen letter zeggen, geen leesteken, hoofdletters, cijfers e.d.")
+        print("Je mag alleen letters zeggen, geen leesteken, hoofdletters, cijfers e.d.")
         time.sleep(1)
     elif geradenletter in geradenletters:
         print("je mag geen letter zeggen die je al hebt geraden")
         time.sleep(1)
-    else:
-        for i in range(lengte):
+
+    else: #als je wel een letter hebt ingetypt
+        for i in range(lengte): #loop door de letters opzoek naar goede letter
             if geradenletter == geheimwoord[i]:
                 print("Je hebt de letter " + geradenletter + " geraden")
-                geradenwoord[i] = geradenletter
-                if added == 0:
-                    geradenletters.append(geradenletter)
+                geradenwoord[i] = geradenletter #vervangt het streepje voor de (goed) geraden letter
+                if added == 0: #zorgt dat (als de letter 2 keer in het woord zit) hij niet twee keer in geradenletters komt
+                    geradenletters.append(geradenletter) #zet de letter in de geradenletters
                 lettersgeraden = lettersgeraden + 1
                 added = 1
-                eenlettergoed = 1
-        if lettersgeraden == lengte:
-            geraden = 1
+                eenlettergoed = True #zegt dat er een letter is geraden
+        if lettersgeraden == lengte: #als je evenveel letters hebt geraden als de lengte van het woord dan heb je het geraden
+            geraden = True
 
-        if eenlettergoed == 0:
+        if eenlettergoed == False: # als je geen letter hebt geraden
             if added == 0:
                 geradenletters.append(geradenletter)
             added = 1
-            foutgeraden = foutgeraden + 1
+            foutgeraden += 1
             if foutgeraden == 5:
                 voortgang()
                 break
@@ -137,13 +152,6 @@ if foutgeraden == 5:
 else:
     print("Je hebt gewonnen!! Het geheime woord was inderdaad " + geheimwoord + " !")
 '''
-
-    Print voorgang: galg, streepjes en al geraden letters
-
-    Vraag om een letter
-
-    # onderstaande kan ook in een switch case
-
     if letter is ?
         print: raad een woord
         if geraden woord = geheim woord
